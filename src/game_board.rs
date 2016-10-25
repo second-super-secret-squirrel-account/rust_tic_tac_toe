@@ -8,7 +8,7 @@ impl Board
 {
     pub fn new(size: usize) -> Board {
         Board {
-            spaces: vec![BoardToken::BLANK; size],
+            spaces: vec![BoardToken::Blank; size],
         }
     }
 

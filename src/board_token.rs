@@ -1,6 +1,6 @@
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum BoardToken {
-    BLANK,
-    PLAYER1,
-    PLAYER2,
+    Blank,
+    Player1,
+    Player2,
 }
