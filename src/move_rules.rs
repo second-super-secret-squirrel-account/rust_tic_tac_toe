@@ -6,13 +6,7 @@ pub fn valid_move(board: Board, space: usize) -> bool {
 }
 
 pub fn moves_remaining(board: Board) -> usize {
-    let mut blank_spaces = 0;
-    for space in board.spaces() {
-        if *space == BoardToken::BLANK {
-            blank_spaces += 1;
-        }
-    }
-    blank_spaces
+    available_spaces(board).len()
 }
 
 pub fn available_spaces(board: Board) -> Vec<usize> {
