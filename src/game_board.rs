@@ -48,4 +48,3 @@ impl Board
         index > 0 && index <= self.spaces.len()
     }
 }
-
