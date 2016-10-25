@@ -44,5 +44,29 @@ fn test_that_trying_to_set_space_above_16_on_4by4_board_does_not_crash() {
     test_board.set_space(17, BoardToken::PLAYER1);
 }
 
+#[test]
+fn size_return_9_for3x3_board() {
+    let test_board = Board::new(9);
+    assert_eq!(9, test_board.size());
+}
 
+#[test]
+fn corners_returns_an_array_with_1_3_6_9_on_a_3x3_board() {
+    let test_board = Board::new(9);
+    let expected = [1, 3, 6, 9];
+    assert_eq!(expected, test_board.corners());
+}
+
+#[test]
+fn corners_returns_an_array_with_1_4_12_16_on_a_4x4_board() {
+    let test_board = Board::new(16);
+    let expected = [1, 4, 12, 16];
+    assert_eq!(expected, test_board.corners());
+}
+
+#[test]
+fn row_size_returns_3_on_3x3_board() {
+    let test_board = Board::new(9);
+    assert_eq!(3, test_board.row_size());
+}
 
