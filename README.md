@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/second-super-secret-squirrel-account/rust_tic_tac_toe.svg?branch=master)](https://travis-ci.org/second-super-secret-squirrel-account/rust_tic_tac_toe)
+
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
