@@ -7,7 +7,6 @@ impl <T: Clone + PartialEq> HasMoveRules<T> for GameBoard<T> {
         self.available_moves().len()
     }
 
-
     fn valid_move(&self, space: usize) -> bool {
         self.get_space(space) == self.blank_value()
     }

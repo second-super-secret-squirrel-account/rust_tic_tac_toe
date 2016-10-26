@@ -1,4 +1,3 @@
-
 pub trait BasicBoard<T> {
     fn spaces(&self) -> &Vec<T>;
     fn blank_value(&self) -> &T;
