@@ -1,8 +1,8 @@
-use game_board::Board;
-use game_board_traits::GameBoard;
-use move_rules_traits::HasMoveRules;
+use game_board::game_board::GameBoard;
+use game_board::basic_board_traits::BasicBoard;
+use game_rules::move_rules_traits::HasMoveRules;
 
-impl <T: Clone + PartialEq> HasMoveRules<T> for Board<T> {
+impl <T: Clone + PartialEq> HasMoveRules<T> for GameBoard<T> {
     fn available_move_count(&self) -> usize {
         self.available_moves().len()
     }

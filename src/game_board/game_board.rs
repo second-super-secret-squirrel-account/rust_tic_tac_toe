@@ -1,14 +1,15 @@
-use game_board_traits::*;
-pub struct Board<T> {
+use game_board::basic_board_traits::BasicBoard;
+
+pub struct GameBoard<T> {
     blank_value: T,
     spaces: Vec<T>,
 }
 
-impl<T: Clone + PartialEq> Board<T> {
-    pub fn new(size: usize, fill: T) -> Board<T> {
+impl<T: Clone + PartialEq> GameBoard<T> {
+    pub fn new(size: usize, fill: T) -> GameBoard<T> {
         let blank = fill.clone();
         let size = size * size;
-        Board {
+        GameBoard {
             blank_value: fill,
             spaces: vec![blank; size],
         }
@@ -19,7 +20,10 @@ impl<T: Clone + PartialEq> Board<T> {
     }
 }
 
-impl<T: Clone + PartialEq> GameBoard<T> for Board<T>
+// This must be implemented in this file in order to access the private
+// date inside the GameBoard stuct
+
+impl <T: Clone + PartialEq> BasicBoard<T> for GameBoard<T>
 {
     fn spaces(&self) -> &Vec<T> {
         &self.spaces

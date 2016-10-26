@@ -1,6 +1,6 @@
-use game_board_traits::GameBoard;
+use game_board::basic_board_traits::BasicBoard;
 
-pub trait HasMoveRules<T> : GameBoard<T> {
+pub trait HasMoveRules<T> : BasicBoard<T> {
     fn valid_move(&self, usize) -> bool;
     fn available_move_count(&self) -> usize;
     fn available_moves(&self) -> Vec<usize>;

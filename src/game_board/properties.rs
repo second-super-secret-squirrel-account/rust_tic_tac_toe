@@ -1,8 +1,8 @@
-use game_board::Board;
-use game_board_traits::GameBoard;
-use board_properties_traits::HasProperties;
+use game_board::game_board::GameBoard;
+use game_board::basic_board_traits::BasicBoard;
+use game_board::properties_traits::HasProperties;
 
-impl <T: Clone + PartialEq > HasProperties<T> for Board<T> {
+impl <T: Clone + PartialEq > HasProperties<T> for GameBoard<T> {
     fn size(&self) -> usize {
         self.spaces().len()
     }

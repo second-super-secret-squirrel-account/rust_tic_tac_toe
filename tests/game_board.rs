@@ -1,16 +1,17 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::game_board_traits::*;
-use tic_tac_toe::game_board::*;
+use tic_tac_toe::game_board::game_board::GameBoard;
+use tic_tac_toe::game_board::basic_board_traits::BasicBoard;
+
 
 static FILL: usize = 0;
 static TEST_MOVE: usize = 1;
 
-fn board_3x3() -> Board<usize> {
-    Board::new(3, FILL)
+fn board_3x3() -> GameBoard<usize> {
+    GameBoard::new(3, FILL)
 }
 
-fn board_4x4() -> Board<usize> {
-    Board::new(4, FILL)
+fn board_4x4() -> GameBoard<usize> {
+    GameBoard::new(4, FILL)
 }
 
 #[test]

@@ -1,17 +1,17 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::game_board::Board;
-use tic_tac_toe::game_board_traits::GameBoard;
-use tic_tac_toe::move_rules_traits::HasMoveRules;
+use tic_tac_toe::game_board::game_board::GameBoard;
+use tic_tac_toe::game_board::basic_board_traits::BasicBoard;
+use tic_tac_toe::game_rules::move_rules_traits::*;
 
 static FILL: usize = 0;
 static TEST_MOVE: usize = 1;
 
-fn board_3x3() -> Board<usize> {
-    Board::new(3, FILL)
+fn board_3x3() -> GameBoard<usize> {
+    GameBoard::new(3, FILL)
 }
 
-fn board_4x4() -> Board<usize> {
-    Board::new(4, FILL)
+fn board_4x4() -> GameBoard<usize> {
+    GameBoard::new(4, FILL)
 }
 
 #[test]
@@ -82,7 +82,7 @@ fn available_moves_returns_vec_of_1_to_16_on_empty_board_4x4() {
 }
 
 #[test]
-fn available_moves_returns_vec_of_2_to_16_on_board_4x4__where_1_is_not_blank() {
+fn available_moves_returns_vec_of_2_to_16_on_board_4x4_where_1_is_not_blank() {
     let mut test_board = board_4x4();
     test_board.set_space(1, TEST_MOVE);
     let expected = vec![2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
