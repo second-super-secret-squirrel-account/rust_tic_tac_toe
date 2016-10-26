@@ -1,20 +1,24 @@
 use game_board::Board;
-use board_token::BoardToken;
+use game_board_traits::GameBoard;
+use move_rules_traits::HasMoveRules;
 
-pub fn valid_move(board: Board, space: usize) -> bool {
-    *board.get_space(space) == BoardToken::Blank
-}
-
-pub fn moves_remaining(board: Board) -> usize {
-    available_spaces(board).len()
-}
-
-pub fn available_spaces(board: Board) -> Vec<usize> {
-    let mut open_spaces = Vec::new();
-    for index in 1..(1 + board.size()) {
-        if *board.get_space(index) == BoardToken::Blank {
-            open_spaces.push(index);
-        }
+impl <T: Clone + PartialEq> HasMoveRules<T> for Board<T> {
+    fn available_move_count(&self) -> usize {
+        self.available_moves().len()
     }
+
+
+    fn valid_move(&self, space: usize) -> bool {
+        self.get_space(space) == self.blank_value()
+    }
+
+    fn available_moves(&self) -> Vec<usize> {
+        let mut open_spaces = Vec::new();
+        for index in 1..(1 + &self.spaces().len()) {
+            if *self.get_space(index) == *self.blank_value() {
+                open_spaces.push(index);
+            }
+        }
         open_spaces
+    }
 }

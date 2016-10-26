@@ -1,50 +1,41 @@
-use board_token::BoardToken;
-
-pub struct Board {
-    spaces: Vec<BoardToken>
+use game_board_traits::*;
+pub struct Board<T> {
+    blank_value: T,
+    spaces: Vec<T>,
 }
 
-impl Board
-{
-    pub fn new(size: usize) -> Board {
+impl<T: Clone + PartialEq> Board<T> {
+    pub fn new(size: usize, fill: T) -> Board<T> {
+        let blank = fill.clone();
+        let size = size * size;
         Board {
-            spaces: vec![BoardToken::Blank; size],
+            blank_value: fill,
+            spaces: vec![blank; size],
         }
     }
 
-    pub fn spaces(&self) -> &Vec<BoardToken> {
+    fn valid_board_index(&self, index: usize) -> bool {
+        index > 0 && index <= self.spaces.len()
+    }
+}
+
+impl<T: Clone + PartialEq> GameBoard<T> for Board<T>
+{
+    fn spaces(&self) -> &Vec<T> {
         &self.spaces
     }
 
-    pub fn size(&self) -> usize {
-        self.spaces.len()
+    fn blank_value(&self) -> &T {
+        &self.blank_value
     }
 
-    pub fn corners(&self) -> [usize; 4] {
-        let row = self.row_size();
-        let mut corners = [1; 4];
-        corners[1] = row;
-        corners[2] = row * (row - 1);
-        corners[3] = row * row;
-        corners
-    }
-
-    pub fn row_size(&self) -> usize {
-        let size = self.size() as f32;
-        size.sqrt() as usize
-    }
-
-    pub fn set_space(&mut self, space: usize, value: BoardToken) {
+    fn set_space(&mut self, space: usize, value: T) {
         if self.valid_board_index(space) {
             self.spaces[space - 1] = value;
         }
     }
 
-    pub fn get_space(&self, space: usize) -> &BoardToken {
+    fn get_space(&self, space: usize) -> &T {
             return &self.spaces[space - 1];
-    }
-
-    fn valid_board_index(&self, index: usize) -> bool {
-        index > 0 && index <= self.spaces.len()
     }
 }
