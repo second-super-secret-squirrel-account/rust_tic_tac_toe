@@ -3,7 +3,7 @@ use game_board::basic_board_traits::BasicBoard;
 use game_rules::move_rules_traits::HasMoveRules;
 
 impl <T: Clone + PartialEq> HasMoveRules<T> for GameBoard<T> {
-    fn available_move_count(&self) -> usize {
+    fn available_moves_count(&self) -> usize {
         self.available_moves().len()
     }
 

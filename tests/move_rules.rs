@@ -15,25 +15,25 @@ fn board_4x4() -> GameBoard<usize> {
 }
 
 #[test]
-fn available_move_count_returns_9_on_blank_3x3_board() {
+fn available_moves_count_returns_9_on_blank_3x3_board() {
     let test_board = board_3x3();
-    assert_eq!(9, test_board.available_move_count());
+    assert_eq!(9, test_board.available_moves_count());
 }
 
 #[test]
-fn available_move_count_returns_8_after_1_move_on_3x3_board() {
+fn available_moves_count_returns_8_after_1_moves_on_3x3_board() {
     let mut test_board = board_3x3();
     test_board.set_space(TEST_MOVE, TEST_MOVE);
-    assert_eq!(8, test_board.available_move_count());
+    assert_eq!(8, test_board.available_moves_count());
 }
 
 #[test]
-fn available_move_count_returns_0_after_9_move_on_3x3_board() {
+fn available_moves_count_returns_0_after_9_moves_on_3x3_board() {
     let mut test_board = board_3x3();
     for index in 1..10 {
         test_board.set_space(index, TEST_MOVE);
     }
-    assert_eq!(0, test_board.available_move_count());
+    assert_eq!(0, test_board.available_moves_count());
 }
 
 #[test]
@@ -51,12 +51,12 @@ fn valid_move_returns_false_if_space_is_not_blank_token() {
 
 
 #[test]
-fn moves_remaining_returns_0_on_blank_3x3_board_after_nine_move_played() {
+fn moves_remaining_returns_0_on_blank_3x3_board_after_nine_moves_played() {
     let mut test_board = board_3x3();
      for index in 0..10 {
         test_board.set_space(index, TEST_MOVE);
      }
-     assert_eq!(0, test_board.available_move_count());
+     assert_eq!(0, test_board.available_moves_count());
 }
 
 #[test]
