@@ -1,73 +1,90 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::game_board::Board;
-use tic_tac_toe::board_token::BoardToken;
-use tic_tac_toe::move_rules;
+use tic_tac_toe::game_board::game_board::GameBoard;
+use tic_tac_toe::game_board::basic_board_traits::BasicBoard;
+use tic_tac_toe::game_rules::move_rules_traits::*;
+
+static FILL: usize = 0;
+static TEST_MOVE: usize = 1;
+
+fn board_3x3() -> GameBoard<usize> {
+    GameBoard::new(3, FILL)
+}
+
+fn board_4x4() -> GameBoard<usize> {
+    GameBoard::new(4, FILL)
+}
+
+#[test]
+fn available_move_count_returns_9_on_blank_3x3_board() {
+    let test_board = board_3x3();
+    assert_eq!(9, test_board.available_move_count());
+}
+
+#[test]
+fn available_move_count_returns_8_after_1_move_on_3x3_board() {
+    let mut test_board = board_3x3();
+    test_board.set_space(TEST_MOVE, TEST_MOVE);
+    assert_eq!(8, test_board.available_move_count());
+}
+
+#[test]
+fn available_move_count_returns_0_after_9_move_on_3x3_board() {
+    let mut test_board = board_3x3();
+    for index in 1..10 {
+        test_board.set_space(index, TEST_MOVE);
+    }
+    assert_eq!(0, test_board.available_move_count());
+}
 
 #[test]
 fn valid_move_returns_ture_if_space_is_blank_token() {
-    let test_board = Board::new(9);
-    assert!(move_rules::valid_move(test_board, 1));
+    let test_board = board_3x3();
+    assert!(test_board.valid_move(TEST_MOVE));
 }
 
 #[test]
 fn valid_move_returns_false_if_space_is_not_blank_token() {
-    let mut test_board = Board::new(9);
-    test_board.set_space(1, BoardToken::Player1);
-    assert_eq!(false, move_rules::valid_move(test_board, 1));
+    let mut test_board = board_3x3();
+    test_board.set_space(1, TEST_MOVE);
+    assert_eq!(false, test_board.valid_move(TEST_MOVE));
 }
 
-#[test]
-fn moves_remaining_returns_9_on_blank_3x3_board() {
-    let test_board = Board::new(9);
-    assert_eq!(9, move_rules::moves_remaining(test_board));
-}
-
-#[test]
-fn moves_remaining_returns_8_on_blank_3x3_board_after_one_move_played() {
-    let mut test_board = Board::new(9);
-    test_board.set_space(1, BoardToken::Player1);
-    assert_eq!(8, move_rules::moves_remaining(test_board));
-}
 
 #[test]
 fn moves_remaining_returns_0_on_blank_3x3_board_after_nine_move_played() {
-    let mut test_board = Board::new(9);
-    for index in 0..10 {
-        test_board.set_space(index, BoardToken::Player1);
-    }
-    assert_eq!(0, move_rules::moves_remaining(test_board));
+    let mut test_board = board_3x3();
+     for index in 0..10 {
+        test_board.set_space(index, TEST_MOVE);
+     }
+     assert_eq!(0, test_board.available_move_count());
 }
 
 #[test]
-fn available_spaces_returns_vec_of_1_to_9_on_empty_board() {
-    let test_board = Board::new(9);
+fn available_moves_returns_vec_of_1_to_9_on_empty_board() {
+    let test_board = board_3x3();
     let expected = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
-    assert_eq!(expected, move_rules::available_spaces(test_board));
+    assert_eq!(expected, test_board.available_moves());
 }
 
-
 #[test]
-fn available_spaces_returns_vec_of_2_to_9_on_board_where_1_is_not_blank() {
-    let mut test_board = Board::new(9);
-    test_board.set_space(1, BoardToken::Player1);
+fn available_moves_returns_vec_of_2_to_9_on_board_where_1_is_not_blank() {
+    let mut test_board = board_3x3();
+    test_board.set_space(1, TEST_MOVE);
     let expected = vec![2, 3, 4, 5, 6, 7, 8, 9];
-
-    assert_eq!(expected, move_rules::available_spaces(test_board));
+    assert_eq!(expected, test_board.available_moves());
 }
 
 #[test]
-fn available_spaces_returns_vec_of_1_to_16_on_empty_4x4_board() {
-    let test_board = Board::new(16);
+fn available_moves_returns_vec_of_1_to_16_on_empty_board_4x4() {
+    let test_board = board_4x4();
     let expected = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    assert_eq!(expected, move_rules::available_spaces(test_board));
+    assert_eq!(expected, test_board.available_moves());
 }
 
-
 #[test]
-fn available_spaces_returns_vec_of_2_to_16_on_4x4_board_where_1_is_not_on_blank() {
-    let mut test_board = Board::new(16);
-    test_board.set_space(1, BoardToken::Player1);
+fn available_moves_returns_vec_of_2_to_16_on_board_4x4_where_1_is_not_blank() {
+    let mut test_board = board_4x4();
+    test_board.set_space(1, TEST_MOVE);
     let expected = vec![2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-    assert_eq!(expected, move_rules::available_spaces(test_board));
+    assert_eq!(expected, test_board.available_moves());
 }
