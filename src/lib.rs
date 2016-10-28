@@ -5,3 +5,4 @@ pub mod game_rules;
 pub mod language;
 pub mod ncurses_wrapper;
 pub mod sprite;
+pub mod game_screen;
