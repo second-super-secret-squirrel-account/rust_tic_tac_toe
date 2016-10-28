@@ -1,5 +1,5 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::game_io::point::Point;
+use tic_tac_toe::sprite::point::Point;
 
 
 #[test]
