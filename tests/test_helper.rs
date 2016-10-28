@@ -3,6 +3,7 @@ use tic_tac_toe::grid::Grid;
 use tic_tac_toe::sprite::Sprite;
 use tic_tac_toe::sprite::point::Point;
 use tic_tac_toe::sprite::color::Color;
+use tic_tac_toe::sprite::sprite_data::SpriteData;
 
 #[allow(dead_code)]
 pub const FILL: usize = 999;
@@ -15,15 +16,15 @@ pub fn point(x: i32, y: i32) -> Point<i32> {
     Point::new(x, y)
 }
 #[allow(dead_code)]
-pub fn test_vec_of_strings() -> Vec<String> {
-    let mut this = Vec::new();
-    this.push("test_sprite".to_string());
-    this.push("line_2".to_string());
+pub fn test_sprite_data() -> SpriteData {
+    let mut this = SpriteData::new();
+    this.add_line("test_sprite".to_string());
+    this.add_line("line_2".to_string());
     this
 }
 #[allow(dead_code)]
 pub fn test_sprite() -> Sprite<i32> {
-    Sprite::new(point(0, 0), Color::White, Color::Black, test_vec_of_strings())
+    Sprite::new(point(0, 0), Color::White, Color::Black, test_sprite_data())
 }
 
 #[allow(dead_code)]
