@@ -1,45 +1,35 @@
-use game_board::basic_board_traits::BasicBoard;
+use grid::Grid;
+use game_board::game_board_traits::GameBoard;
 
-pub struct GameBoard<T> {
-    blank_value: T,
-    spaces: Vec<T>,
-}
-
-impl<T: Clone + PartialEq> GameBoard<T> {
-    pub fn new(size: usize, fill: T) -> GameBoard<T> {
-        let blank = fill.clone();
-        let size = size * size;
-        GameBoard {
-            blank_value: fill,
-            spaces: vec![blank; size],
-        }
-    }
-
-    fn valid_board_index(&self, index: usize) -> bool {
-        index > 0 && index <= self.spaces.len()
-    }
-}
-
-// This must be implemented in this file in order to access the private
-// date inside the GameBoard stuct
-
-impl <T: Clone + PartialEq> BasicBoard<T> for GameBoard<T>
-{
-    fn spaces(&self) -> &Vec<T> {
-        &self.spaces
-    }
-
-    fn blank_value(&self) -> &T {
-        &self.blank_value
+impl <T: Clone + PartialEq> GameBoard<T> for Grid<T> {
+    fn corners(&self) -> [usize; 4] {
+        let row = self.rows();
+        let mut corners = [1; 4];
+        corners[1] = row;
+        corners[2] = row * (row - 1);
+        corners[3] = row * row;
+        corners
     }
 
     fn set_space(&mut self, space: usize, value: T) {
-        if self.valid_board_index(space) {
-            self.spaces[space - 1] = value;
-        }
+        let row = self.space_to_row(space);
+        let col = self.space_to_col(space);
+        self.set(row, col, value);
     }
 
-    fn get_space(&self, space: usize) -> &T {
-            return &self.spaces[space - 1];
+    fn get_space(&self, space: usize) -> T {
+        let row = self.space_to_row(space);
+        let col = self.space_to_col(space);
+        self.get(row, col)
+    }
+}
+
+impl <T: Clone + PartialEq> Grid<T> {
+    fn space_to_row(&self, space: usize) -> usize {
+        space / self.rows()
+    }
+
+    fn space_to_col(&self, space: usize) -> usize {
+        space % self.cols()
     }
 }

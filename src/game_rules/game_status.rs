@@ -1,16 +1,17 @@
 extern crate std;
-use game_board::game_board::GameBoard;
-use game_board::basic_board_traits::BasicBoard;
+use grid::Grid;
+use game_board::game_board_traits::GameBoard;
 use game_rules::game_state::GameState;
 use game_rules::game_status_traits::HasGameStatus;
 use game_rules::move_rules_traits::HasMoveRules;
-use game_board::properties_traits::HasProperties;
 
-impl <T: Clone + PartialEq> HasGameStatus<T> for GameBoard<T> {
+impl <T: Clone + PartialEq> HasGameStatus<T> for Grid<T> {
     fn game_status(&self) -> GameState {
         if self.is_there_a_winner() {
             return GameState::Winner;
         }
+
+        println!(" count {}", self.available_moves_count());
 
         if self.available_moves_count() == 0 {
             return GameState::Tied;
@@ -19,11 +20,11 @@ impl <T: Clone + PartialEq> HasGameStatus<T> for GameBoard<T> {
     }
 }
 
-impl <T: Clone + PartialEq> GameBoard<T> {
+impl <T: Clone + PartialEq> Grid<T> {
     fn is_there_a_winner(&self) -> bool {
         let combinations = self.generate_winning_combinations();
         for combination in combinations {
-            if self.get_space(combination[0]) != self.blank_value() && self.check_if_spaces_are_equal(combination) {
+            if self.get_space(combination[0]) != self.fill_value() && self.check_if_spaces_are_equal(combination) {
                 return true;
             }
         }
@@ -33,25 +34,25 @@ impl <T: Clone + PartialEq> GameBoard<T> {
     fn generate_winning_combinations(&self) -> Vec<Vec<usize>> {
         let mut combinations = Vec::new();
         if self.size() == 9 {
-            combinations.push(vec!(1, 2, 3));
-            combinations.push(vec!(4, 5, 6));
-            combinations.push(vec!(7, 8, 9));
+            combinations.push(vec!(0, 1, 2));
+            combinations.push(vec!(3, 4, 5));
+            combinations.push(vec!(6, 7, 8));
+            combinations.push(vec!(0, 3, 6));
             combinations.push(vec!(1, 4, 7));
             combinations.push(vec!(2, 5, 8));
-            combinations.push(vec!(3, 6, 9));
-            combinations.push(vec!(1, 5, 9));
-            combinations.push(vec!(3, 5, 7));
+            combinations.push(vec!(0, 4, 8));
+            combinations.push(vec!(2, 4, 6));
         } else if self.size() == 16 {
-            combinations.push(vec!(1, 2, 3, 4));
-            combinations.push(vec!(5, 6, 7, 8));
-            combinations.push(vec!(9, 10, 11, 12));
-            combinations.push(vec!(13, 14, 15, 16));
+            combinations.push(vec!(0, 1, 2, 3));
+            combinations.push(vec!(4, 5, 6, 7));
+            combinations.push(vec!(8, 9, 10, 11));
+            combinations.push(vec!(12, 13, 14, 15));
+            combinations.push(vec!(0, 4, 8, 12));
             combinations.push(vec!(1, 5, 9, 13));
             combinations.push(vec!(2, 6, 10, 14));
             combinations.push(vec!(3, 7, 11, 15));
-            combinations.push(vec!(4, 8, 12, 16));
-            combinations.push(vec!(1, 6, 11, 16));
-            combinations.push(vec!(4, 7, 10, 13));
+            combinations.push(vec!(2, 5, 10, 15));
+            combinations.push(vec!(3, 6, 9, 12));
         }
         combinations
     }
