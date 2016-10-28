@@ -10,7 +10,7 @@ impl <T: Clone + PartialEq> Grid<T> {
     pub fn new(rows: usize, cols: usize, fill: T) -> Grid<T> {
         let blank = fill.clone();
         let mut grid = Vec::new();
-        for index in 0..rows {
+        for _ in 0..rows {
             let row = GridRow::new(cols, fill.clone());
             grid.push(row);
         }
@@ -38,5 +38,9 @@ impl <T: Clone + PartialEq> Grid<T> {
 
     pub fn cols(&self) -> usize {
         self.grid[0].len()
+    }
+
+    pub fn size(&self) -> usize {
+        self.grid[0].len() * self.grid.len()
     }
  }
