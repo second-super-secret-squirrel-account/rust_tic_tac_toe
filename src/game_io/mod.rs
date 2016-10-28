@@ -7,6 +7,9 @@ static GRID_MIDDLE_END: &'static str = "  ";
 
 
 */
+
+pub mod point;
+
 use language::Language;
 pub struct GameIO {
     language: Language,
