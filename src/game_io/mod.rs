@@ -1,6 +1,13 @@
-struct GameIO {
-    text: GameText,
-    player1_mark: char,
-    palyer2_mark: char,
+pub mod grid;
+
+use language::Language;
+pub struct GameIO {
+    language: Language,
+
 }
 
+
+impl GameIO {
+
+
+}
