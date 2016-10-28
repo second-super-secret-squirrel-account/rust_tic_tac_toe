@@ -1,15 +1,9 @@
-static GRID_TOP: &'static str = " -----";
-static GRID_SECOND_START: &'static str = "|     ";
-static GRID_SECOND_END: &'static str = "|";
-static GRID_MIDDLE_START: &'static str = "|  ";
-static GRID_MIDDLE_END: &'static str = "  ";
-
-pub struct GridRow {
-    row: Vec<char>,
+pub struct GridRow<T> {
+    row: Vec<T>,
 }
 
-impl GridRow {
-    pub fn new(size: usize, fill: char) -> GridRow {
+impl <T: Clone + PartialEq> GridRow<T> {
+    pub fn new(size: usize, fill: T) -> GridRow<T> {
         let row = vec!(fill; size);
         GridRow {
             row: row,
@@ -20,36 +14,43 @@ impl GridRow {
        self.row.len()
     }
 
-    pub fn get(&self, index: usize) -> char {
+    pub fn get(&self, index: usize) -> T {
        self.row[index].clone()
     }
 
-    pub fn set(&mut self, index: usize, value: char) {
+    pub fn set(&mut self, index: usize, value: T) {
         self.row[index] = value;
     }
 }
 
-pub struct Grid {
-    grid: Vec<GridRow>,
+pub struct Grid<T> {
+    fill_value: T,
+    grid: Vec<GridRow<T>>,
 }
 
-impl Grid {
-    pub fn new(rows: usize, cols: usize, fill: char) -> Grid {
+impl <T: Clone + PartialEq> Grid<T> {
+    pub fn new(rows: usize, cols: usize, fill: T) -> Grid<T> {
+        let blank = fill.clone();
         let mut grid = Vec::new();
         for index in 0..rows {
-            let row = GridRow::new(cols, fill);
+            let row = GridRow::new(cols, fill.clone());
             grid.push(row);
         }
         Grid {
+            fill_value: blank,
             grid: grid,
         }
     }
 
-    pub fn set(&mut self, row: usize, col: usize, value: char) {
+    pub fn fill_value(&self) -> T {
+        self.fill_value.clone()
+    }
+
+    pub fn set(&mut self, row: usize, col: usize, value: T) {
         self.grid[row].set(col, value);
     }
 
-    pub fn get(&self, row: usize, col: usize) -> char {
+    pub fn get(&self, row: usize, col: usize) -> T {
         self.grid[row].get(col)
     }
 

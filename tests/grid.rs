@@ -21,6 +21,19 @@ fn test_cols_returns_4_on_a_2x4_grid() {
     let mut test_grid = Grid::new(2, 4, ' ');
     assert_eq!(4, test_grid.cols());
 }
+
+#[test]
+fn fill_value_getter_returns_value_passed_to_constructor() {
+    let test_grid = Grid::new(3, 3, ' ');
+
+    assert_eq!(' ', test_grid.fill_value());
+}
+
+
+
+
+
+
 use tic_tac_toe::game_io::grid::GridRow;
 
 #[test]
