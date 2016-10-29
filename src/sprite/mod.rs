@@ -6,21 +6,19 @@ use sprite::color::Color;
 use sprite::point::Point;
 use sprite::sprite_data::SpriteData;
 
-
-#[derive(Debug, Eq, PartialEq, Clone)]
-pub struct Sprite<T> {
-    point: Point<T>,
+pub struct Sprite {
+    point: Point,
     fg_color: Color,
     bg_color: Color,
     value: SpriteData,
 }
 
-impl <T: Clone + PartialEq> Sprite<T> {
-    pub fn new(point: Point<T>,
+impl Sprite {
+    pub fn new(point: Point,
                fg_color: Color,
                bg_color: Color,
                value: SpriteData
-               ) -> Sprite<T> {
+               ) -> Sprite {
         Sprite {
             point: point,
             fg_color: fg_color,
@@ -33,7 +31,7 @@ impl <T: Clone + PartialEq> Sprite<T> {
         &self.value
     }
 
-    pub fn point(&self) -> &Point<T> {
+    pub fn point(&self) -> &Point {
         &self.point
     }
 

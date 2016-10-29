@@ -3,14 +3,14 @@ extern crate tic_tac_toe;
 use tic_tac_toe::board_token::BoardToken;
 
 #[test]
-fn test_board_token_to_string_gets_X_for_player_1() {
+fn test_board_token_to_string_gets_x_for_player_1() {
     let token = BoardToken::Player1;
 
     assert_eq!("X", token.to_string());
 }
 
 #[test]
-fn test_board_token_to_string_gets_O_for_player_2() {
+fn test_board_token_to_string_gets_o_for_player_2() {
     let token = BoardToken::Player2;
 
     assert_eq!("O", token.to_string());

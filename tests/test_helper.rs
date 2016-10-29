@@ -12,7 +12,7 @@ pub const FILL: usize = 999;
 pub const TEST_MOVE: usize = 1;
 
 #[allow(dead_code)]
-pub fn point(x: i32, y: i32) -> Point<i32> {
+pub fn point(x: i32, y: i32) -> Point {
     Point::new(x, y)
 }
 #[allow(dead_code)]
@@ -23,7 +23,7 @@ pub fn test_sprite_data() -> SpriteData {
     this
 }
 #[allow(dead_code)]
-pub fn test_sprite() -> Sprite<i32> {
+pub fn test_sprite() -> Sprite {
     Sprite::new(point(0, 0), Color::White, Color::Black, test_sprite_data())
 }
 

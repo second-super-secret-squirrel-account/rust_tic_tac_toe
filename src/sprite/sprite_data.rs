@@ -15,7 +15,17 @@ impl SpriteData {
         &self.value
     }
 
-    pub fn add_line(&mut self, line: String) {
-        &self.value.push(line);
+    pub fn add_line<S: Into<String>>(&mut self, line: S) {
+        &self.value.push(line.into());
     }
+
+    pub fn len(&self) -> usize {
+        self.value.len()
+    }
+
+    pub fn line(&self, index: usize) -> String {
+        self.value[index].clone()
+    }
+
+
 }

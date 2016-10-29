@@ -58,7 +58,7 @@ fn returns_a_filled_out_board_of_ints() {
     let mut test_grid = Grid::new(3, 3, 0);
     for i in 0..3 {
         for j in 0..3 {
-            let value = ((i * 3) + j);
+            let value = i * 3 + j;
             test_grid.set(i, j, value);
         }
     }

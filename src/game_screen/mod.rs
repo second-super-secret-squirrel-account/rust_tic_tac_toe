@@ -1,7 +1,7 @@
 use sprite::Sprite;
 
 pub struct GameScreen {
-    sprites: Vec<Sprite<i32>>,
+    sprites: Vec<Sprite>,
 }
 
 impl GameScreen {
@@ -12,11 +12,11 @@ impl GameScreen {
         }
     }
 
-    pub fn add_sprite(&mut self, sprite: Sprite<i32>) {
+    pub fn add_sprite(&mut self, sprite: Sprite) {
         self.sprites.push(sprite);
     }
 
-    pub fn sprites(&self) -> &Vec<Sprite<i32>> {
+    pub fn sprites(&self) -> &Vec<Sprite> {
         &self.sprites
     }
 }
