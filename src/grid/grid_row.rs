@@ -1,3 +1,4 @@
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub struct GridRow<T> {
     row: Vec<T>,
 }

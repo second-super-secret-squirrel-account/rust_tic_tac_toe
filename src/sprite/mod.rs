@@ -1,9 +1,11 @@
 pub mod point;
 pub mod color;
 pub mod sprite_data;
+pub mod sprite_data_traits;
 use sprite::color::Color;
 use sprite::point::Point;
 use sprite::sprite_data::SpriteData;
+
 
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub struct Sprite<T> {
