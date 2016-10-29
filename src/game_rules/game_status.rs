@@ -11,8 +11,6 @@ impl <T: Clone + PartialEq> HasGameStatus<T> for Grid<T> {
             return GameState::Winner;
         }
 
-        println!(" count {}", self.available_moves_count());
-
         if self.available_moves_count() == 0 {
             return GameState::Tied;
         }
