@@ -1,14 +1,22 @@
 #[derive(Debug, Eq, PartialEq, Clone)]
-pub struct Point<T> {
-    pub x: T,
-    pub y: T,
+pub struct Point {
+    x: i32,
+    y: i32,
 }
 
-impl<T: Clone + PartialEq> Point<T> {
-    pub fn new(x: T, y: T) -> Point<T> {
+impl Point {
+    pub fn new(x: i32, y: i32) -> Point {
         Point {
             x: x,
             y: y,
         }
+    }
+
+    pub fn x(&self) -> i32 {
+        self.x
+    }
+
+    pub fn y(&self) -> i32 {
+        self.y
     }
 }

@@ -12,8 +12,8 @@ pub fn end() {
     ncurses::endwin();
 }
 
-pub fn print(x: i32, y: i32, value: String) {
-    ncurses::mvprintw(x, y, (format!("{}", value).as_ref()));
+pub fn print<S: Into<String>>(x: i32, y: i32, value: S) {
+    ncurses::mvprintw(x, y, (format!("{}", value.into()).as_ref()));
 }
 
 pub fn get_key() -> i32 {
