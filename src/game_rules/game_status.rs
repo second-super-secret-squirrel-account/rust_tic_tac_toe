@@ -7,28 +7,31 @@ use game_rules::move_rules_traits::HasMoveRules;
 
 impl <T: Clone + PartialEq> HasGameStatus<T> for Grid<T> {
     fn game_status(&self) -> GameState {
-        if self.is_there_a_winner() {
+        if self.game_winner() != self.fill_value() {
             return GameState::Winner;
         }
-
-        println!(" count {}", self.available_moves_count());
 
         if self.available_moves_count() == 0 {
             return GameState::Tied;
         }
         GameState::Playing
     }
+
+    fn game_winner(&self) -> T {
+        self.is_there_a_winner()
+    }
 }
 
 impl <T: Clone + PartialEq> Grid<T> {
-    fn is_there_a_winner(&self) -> bool {
+    fn is_there_a_winner(&self) -> T {
         let combinations = self.generate_winning_combinations();
         for combination in combinations {
+            let current_mark = self.get_space(combination.clone()[0]);
             if self.get_space(combination[0]) != self.fill_value() && self.check_if_spaces_are_equal(combination) {
-                return true;
+                return current_mark;
             }
         }
-        false
+        return self.fill_value();
     }
 
     fn generate_winning_combinations(&self) -> Vec<Vec<usize>> {

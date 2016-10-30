@@ -20,7 +20,6 @@ fn game_status_returns_game_state_tied_when_no_winner_and_board_is_full() {
 
     for num in 0..9 {
         test_board.set_space(num, num);
-        println!("set_space {} ", num);
     }
 
     let expected = GameState::Tied;
@@ -134,4 +133,22 @@ fn game_status_returns_game_state_winner_when_first_col_is_all_the_same_for_4x4(
 
     let expected = GameState::Winner;
     assert_eq!(expected, test_board.game_status());
+}
+
+#[test]
+fn game_winner_returns_1_when_that_is_winner() {
+    let mut test_board = board_3x3();
+
+    test_board.set_space(0, TEST_MOVE);
+    test_board.set_space(1, TEST_MOVE);
+    test_board.set_space(2, TEST_MOVE);
+
+    assert_eq!(1, test_board.game_winner());
+}
+
+#[test]
+fn game_winner_returns_fill_value_when_that_is_no_winner() {
+    let test_board = board_3x3();
+
+    assert_eq!(FILL, test_board.game_winner());
 }
