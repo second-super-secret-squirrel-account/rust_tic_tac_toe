@@ -1,7 +1,10 @@
 extern crate tic_tac_toe;
 mod test_helper;
 use test_helper::*;
+use tic_tac_toe::grid::Grid;
 use tic_tac_toe::game_board::game_board_traits::GameBoard;
+use tic_tac_toe::game_rules::move_rules_traits::HasMoveRules;
+use tic_tac_toe::board_token::BoardToken;
 
 #[test]
 fn board_sets_blank_value() {
@@ -52,4 +55,16 @@ fn set_space_selects_the_correct_rol_col_for_4x4() {
     test_board.set_space(11, TEST_MOVE);
 
     assert_eq!(test_board.get(2, 3), TEST_MOVE);
+}
+
+#[test]
+fn moves_can_be_played_on_cloned_board() {
+    let test_board = Grid::new(3, 3, BoardToken::Blank);
+    let p1 = BoardToken::Player1;
+    let mut clone_board = test_board.clone();
+    let moves = test_board.available_moves();
+    let space = moves[0];
+    clone_board.set_space(space, p1.clone());
+    //assert_eq!(p1, test_board.get_space(space));
+    assert_eq!(p1, clone_board.get_space(space));
 }
