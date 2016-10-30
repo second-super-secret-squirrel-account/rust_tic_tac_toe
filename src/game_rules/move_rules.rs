@@ -1,4 +1,4 @@
-use grid::Grid;
+use game_board::grid::Grid;
 use game_board::game_board_traits::GameBoard;
 use game_rules::move_rules_traits::HasMoveRules;
 

@@ -5,7 +5,7 @@ pub mod input;
 pub mod output;
 pub mod screen_properties;
 
-use ncurses_wrapper::color_pairs::*;
+use game_io::ncurses_wrapper::color_pairs::*;
 
 
 pub fn init() {

@@ -1,4 +1,4 @@
-use ncurses_wrapper::color_pairs::*;
+use game_io::ncurses_wrapper::color_pairs::*;
 
 #[derive(Debug, Eq, PartialEq, Clone)]
  pub enum Color {

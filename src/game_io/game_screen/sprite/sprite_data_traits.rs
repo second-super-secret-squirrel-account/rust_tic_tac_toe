@@ -1,5 +1,5 @@
 
-use sprite::sprite_data::SpriteData;
+use game_io::game_screen::sprite::sprite_data::SpriteData;
 
 pub trait Drawable {
 

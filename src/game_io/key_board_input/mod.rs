@@ -1,4 +1,4 @@
-use ncurses_wrapper::input;
+use game_io::ncurses_wrapper::input;
 
 pub const KEY_UP: i32 = input::KEY_UP;
 pub const KEY_DOWN: i32 = input::KEY_DOWN;

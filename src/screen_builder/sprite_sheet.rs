@@ -1,4 +1,4 @@
-use sprite::sprite_data::SpriteData;
+use game_io::game_screen::sprite::sprite_data::SpriteData;
 
 pub fn board() -> SpriteData {
     let mut sprite_data = SpriteData::new();

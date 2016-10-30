@@ -1,10 +1,5 @@
-pub mod grid;
-pub mod board_token;
 pub mod game_board;
 pub mod game_rules;
-pub mod language;
-pub mod ncurses_wrapper;
-pub mod sprite;
-pub mod game_screen;
+pub mod game_io;
+pub mod screen_builder;
 pub mod mini_max;
-pub mod key_board_input;

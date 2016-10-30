@@ -1,5 +1,5 @@
 extern crate std;
-use grid::Grid;
+use game_board::grid::Grid;
 use game_board::game_board_traits::GameBoard;
 use game_rules::game_state::GameState;
 use game_rules::game_status_traits::HasGameStatus;

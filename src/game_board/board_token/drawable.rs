@@ -1,6 +1,6 @@
-use board_token::BoardToken;
-use sprite::sprite_data::SpriteData;
-use sprite::sprite_data_traits::Drawable;
+use game_board::board_token::BoardToken;
+use game_io::game_screen::sprite::sprite_data::SpriteData;
+use game_io::game_screen::sprite::sprite_data_traits::Drawable;
 
 impl Drawable for BoardToken {
     fn to_sprite_data(&self) -> SpriteData {
