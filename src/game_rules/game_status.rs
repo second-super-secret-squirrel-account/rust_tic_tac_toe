@@ -26,8 +26,7 @@ impl <T: Clone + PartialEq> Grid<T> {
     fn is_there_a_winner(&self) -> T {
         let combinations = self.generate_winning_combinations();
         for combination in combinations {
-            let mut current_mark = self.get_space(combination.clone()[0]);
-            //current_mark = self.get_space(combination[0]);
+            let current_mark = self.get_space(combination.clone()[0]);
             if self.get_space(combination[0]) != self.fill_value() && self.check_if_spaces_are_equal(combination) {
                 return current_mark;
             }

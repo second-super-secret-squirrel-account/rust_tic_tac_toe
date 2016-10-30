@@ -5,8 +5,6 @@ use game_rules::game_status_traits::HasGameStatus;
 use game_rules::move_rules_traits::HasMoveRules;
 use game_board::game_board_traits::GameBoard;
 
-use ncurses_wrapper::*;
-
 static STARTING_DEPTH: i32 = 0;
 
 #[derive(Debug, Eq, PartialEq, Clone)]
