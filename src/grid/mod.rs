@@ -1,5 +1,4 @@
 mod grid_row;
-mod drawable;
 use grid::grid_row::GridRow;
 
 #[derive(Debug, Eq, PartialEq, Clone)]

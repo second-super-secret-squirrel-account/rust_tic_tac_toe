@@ -32,7 +32,7 @@ pub fn test_sprite_data() -> SpriteData {
 }
 #[allow(dead_code)]
 pub fn test_sprite() -> Sprite {
-    Sprite::new(point(0, 0), Color::White, Color::Black, test_sprite_data())
+    Sprite::new(point(0, 0), Color::WhiteOnBlue, test_sprite_data())
 }
 
 #[allow(dead_code)]

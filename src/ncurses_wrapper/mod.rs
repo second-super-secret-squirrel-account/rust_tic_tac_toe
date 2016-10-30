@@ -1,35 +1,34 @@
 extern crate ncurses;
 
-pub const KEY_UP: i32 = ncurses::KEY_UP;
-pub const KEY_DOWN: i32 = ncurses::KEY_DOWN;
-pub const KEY_LEFT: i32 = ncurses::KEY_LEFT;
-pub const KEY_RIGHT: i32 = ncurses::KEY_RIGHT;
+pub mod color_pairs;
+pub mod input;
+pub mod output;
+pub mod screen_properties;
+
+use ncurses_wrapper::color_pairs::*;
 
 
 pub fn init() {
     ncurses::initscr();
     ncurses::raw();
+    ncurses::start_color();
     ncurses::keypad(ncurses::stdscr(), true);
     ncurses::noecho();
     ncurses::curs_set(ncurses::CURSOR_VISIBILITY::CURSOR_INVISIBLE);
+
+    init_color_pairs();
 }
 
 pub fn end() {
     ncurses::endwin();
 }
 
-pub fn print<S: Into<String>>(x: i32, y: i32, value: S) {
-    ncurses::mvprintw(x, y, (format!("{}", value.into()).as_ref()));
-}
-
-pub fn get_key() -> i32 {
-    ncurses::getch()
-}
-
-pub fn clear() {
-    ncurses::clear();
-}
-
-pub fn refresh() {
-    ncurses::refresh();
+fn init_color_pairs() {
+    ncurses::init_pair(WHITE_ON_BLUE, ncurses::COLOR_WHITE, ncurses::COLOR_BLUE);
+    ncurses::init_pair(RED_ON_BLUE, ncurses::COLOR_RED, ncurses::COLOR_BLUE);
+    ncurses::init_pair(GREEN_ON_BLUE, ncurses::COLOR_BLUE, ncurses::COLOR_BLUE);
+    ncurses::init_pair(YELLOW_ON_BLUE, ncurses::COLOR_YELLOW, ncurses::COLOR_BLUE);
+    ncurses::init_pair(RED_ON_YELLOW, ncurses::COLOR_RED, ncurses::COLOR_YELLOW);
+    ncurses::init_pair(GREEN_ON_YELLOW, ncurses::COLOR_GREEN, ncurses::COLOR_YELLOW);
+    ncurses::init_pair(BLUE_ON_YELLOW, ncurses::COLOR_BLUE, ncurses::COLOR_YELLOW);
 }

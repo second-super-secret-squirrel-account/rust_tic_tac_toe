@@ -8,21 +8,18 @@ use sprite::sprite_data::SpriteData;
 
 pub struct Sprite {
     point: Point,
-    fg_color: Color,
-    bg_color: Color,
+    color: Color,
     value: SpriteData,
 }
 
 impl Sprite {
     pub fn new(point: Point,
-               fg_color: Color,
-               bg_color: Color,
+               color: Color,
                value: SpriteData
                ) -> Sprite {
         Sprite {
             point: point,
-            fg_color: fg_color,
-            bg_color: bg_color,
+            color: color,
             value: value,
         }
     }
@@ -35,11 +32,7 @@ impl Sprite {
         &self.point
     }
 
-    pub fn fg_color(&self) -> &Color {
-        &self.fg_color
-    }
-
-    pub fn bg_color(&self) -> &Color {
-        &self.bg_color
+    pub fn color(&self) -> &Color {
+        &self.color
     }
 }

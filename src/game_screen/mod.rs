@@ -1,3 +1,5 @@
+mod screen_drawables;
+
 use sprite::Sprite;
 
 pub struct GameScreen {
