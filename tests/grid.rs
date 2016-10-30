@@ -1,5 +1,5 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::grid::Grid;
+use tic_tac_toe::game_board::grid::Grid;
 
 #[test]
 fn test_grid_set_and_get() {

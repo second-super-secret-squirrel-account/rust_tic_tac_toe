@@ -5,14 +5,15 @@ use game_io::game_screen::sprite::Sprite;
 use game_io::game_screen::GameScreen;
 use game_io::game_screen::sprite::point::Point;
 use game_io::game_screen::sprite::color::Color;
-use game_io::ncurses_wrapper::screen_properties;
+use game_io::screen_width;
+use game_io::screen_height;
 
 pub fn playing_screen() -> GameScreen {
     let mut screen = GameScreen::new();
 
 
-    let screen_width = screen_properties::get_width();
-    let screen_height = screen_properties::get_height();
+    let screen_width = screen_width();
+    let screen_height = screen_height();
 
     let board_width = sprite_sheet::board().width();
     let board_height = sprite_sheet::board().height();

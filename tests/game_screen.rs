@@ -1,7 +1,7 @@
 extern crate tic_tac_toe;
 mod test_helper;
 use test_helper::*;
-use tic_tac_toe::game_screen::GameScreen;
+use tic_tac_toe::game_io::game_screen::GameScreen;
 
 
 #[test]

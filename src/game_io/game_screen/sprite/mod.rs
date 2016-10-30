@@ -44,7 +44,6 @@ impl Sprite {
 
     pub fn draw(&self) {
         set_colors(self.color.value());
-        let mut line_incrementer = 0;
         for index in 0..self.data.len() {
             let offset = index as i32;
             print((self.point.x() + offset), self.point.y(), self.data.line(index));

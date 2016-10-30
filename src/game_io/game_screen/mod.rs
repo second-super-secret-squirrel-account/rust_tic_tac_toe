@@ -1,7 +1,6 @@
 pub mod sprite;
 use game_io::game_screen::sprite::Sprite;
 use game_io::ncurses_wrapper::output::*;
-use game_io::ncurses_wrapper::color_pairs::set_colors;
 
 pub struct GameScreen {
     sprites: Vec<Sprite>,

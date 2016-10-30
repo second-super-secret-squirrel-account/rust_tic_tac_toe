@@ -1,6 +1,6 @@
 extern crate tic_tac_toe;
 
-use tic_tac_toe::key_board_input::*;
+use tic_tac_toe::game_io::key_board_input::*;
 
 
 // vim style movement keys

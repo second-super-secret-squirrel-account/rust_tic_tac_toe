@@ -3,7 +3,7 @@ extern crate ncurses;
 pub mod color_pairs;
 pub mod input;
 pub mod output;
-pub mod screen_properties;
+
 
 use game_io::ncurses_wrapper::color_pairs::*;
 
@@ -31,4 +31,18 @@ fn init_color_pairs() {
     ncurses::init_pair(RED_ON_YELLOW, ncurses::COLOR_RED, ncurses::COLOR_YELLOW);
     ncurses::init_pair(GREEN_ON_YELLOW, ncurses::COLOR_GREEN, ncurses::COLOR_YELLOW);
     ncurses::init_pair(BLUE_ON_YELLOW, ncurses::COLOR_BLUE, ncurses::COLOR_YELLOW);
+}
+
+pub fn get_width() -> i32 {
+    let mut width = 0;
+    let mut height = 0;
+    ncurses::getmaxyx(ncurses::stdscr(), &mut height, &mut width);
+    width
+}
+
+pub fn get_height() -> i32 {
+    let mut width = 0;
+    let mut height = 0;
+    ncurses::getmaxyx(ncurses::stdscr(), &mut height, &mut width);
+    height
 }

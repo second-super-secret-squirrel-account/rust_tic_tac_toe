@@ -1,5 +1,5 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::sprite::point::Point;
+use tic_tac_toe::game_io::game_screen::sprite::point::Point;
 
 #[test]
 fn test_constructor_sets_x_and_y_correctly() {
