@@ -8,6 +8,8 @@ use game_io::game_screen::GameScreen;
 use game_io::game_screen::sprite::point::Point;
 use game_io::game_screen::sprite::color::Color;
 use game_io::game_screen::sprite::sprite_data_traits::Drawable;
+use game_rules::game_status_traits::HasGameStatus;
+use game_rules::game_state::GameState;
 
 pub struct ScreenBuilder {
     screen_width: i32,
@@ -28,11 +30,25 @@ impl ScreenBuilder {
         screen.add_sprite(self.title_bar_sprite());
         screen.add_sprite(self.board_sprite());
 
-        for sprite in self.token_spites(board) {
+        for sprite in self.token_spites(board.clone()) {
             screen.add_sprite(sprite);
         }
 
+        if board.game_status() != GameState::Playing {
+            screen.add_sprite(self.bottom_menu_sprite());
+
+        }
+
         screen
+    }
+
+    fn bottom_menu_sprite(&self) -> Sprite {
+        let point = Point::new (self.screen_height - 3, 3);
+        let color = Color::YellowOnBlue;
+        let data = sprite_sheet::bottom_menu();
+
+        Sprite::new(point, color, data)
+
     }
 
     fn background_sprite(&self) -> Sprite {

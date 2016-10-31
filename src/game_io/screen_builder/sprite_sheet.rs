@@ -86,10 +86,10 @@ pub fn title() -> SpriteData {
     sprite_data
 }
 
-pub fn buttom_bar() -> SpriteData {
+pub fn bottom_menu() -> SpriteData {
     let mut sprite_data = SpriteData::new();
 
-    sprite_data.add_line("Q: Quit   R: Restart Game / Rematch");
+    sprite_data.add_line("Q: Quit   R: Rematch");
 
     sprite_data
 }
