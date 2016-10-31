@@ -1,9 +1,9 @@
-use ncurses_wrapper;
+use game_io::ncurses_wrapper::input;
 
-pub const KEY_UP: i32 = ncurses_wrapper::KEY_UP;
-pub const KEY_DOWN: i32 = ncurses_wrapper::KEY_DOWN;
-pub const KEY_RIGHT: i32 = ncurses_wrapper::KEY_RIGHT;
-pub const KEY_LEFT: i32 = ncurses_wrapper::KEY_LEFT;
+pub const KEY_UP: i32 = input::KEY_UP;
+pub const KEY_DOWN: i32 = input::KEY_DOWN;
+pub const KEY_RIGHT: i32 = input::KEY_RIGHT;
+pub const KEY_LEFT: i32 = input::KEY_LEFT;
 
 pub const KEY_J: i32 = 106;
 pub const KEY_K: i32 = 107;
@@ -22,7 +22,7 @@ pub const KEY_ENTER: i32 = 10;
 pub const KEY_SPACEBAR: i32 = 32;
 
 pub fn get_key() -> i32 {
-    ncurses_wrapper::get_key()
+    input::get_key()
 }
 
 pub fn is_up(key: i32) -> bool {

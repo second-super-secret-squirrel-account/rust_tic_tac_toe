@@ -1,10 +1,10 @@
 extern crate tic_tac_toe;
 mod test_helper;
 use test_helper::*;
-use tic_tac_toe::grid::Grid;
+use tic_tac_toe::game_board::grid::Grid;
 use tic_tac_toe::game_board::game_board_traits::GameBoard;
 use tic_tac_toe::game_rules::move_rules_traits::HasMoveRules;
-use tic_tac_toe::board_token::BoardToken;
+use tic_tac_toe::game_board::board_token::BoardToken;
 
 #[test]
 fn board_sets_blank_value() {

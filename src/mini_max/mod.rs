@@ -1,5 +1,5 @@
 use std::fmt;
-use grid::Grid;
+use game_board::grid::Grid;
 use game_rules::game_state::GameState;
 use game_rules::game_status_traits::HasGameStatus;
 use game_rules::move_rules_traits::HasMoveRules;

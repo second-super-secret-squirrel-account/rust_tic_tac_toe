@@ -1,6 +1,5 @@
 mod grid_row;
-mod drawable;
-use grid::grid_row::GridRow;
+use game_board::grid::grid_row::GridRow;
 
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub struct Grid<T> {

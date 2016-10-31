@@ -1,10 +1,10 @@
 extern crate tic_tac_toe;
-use tic_tac_toe::grid::Grid;
+use tic_tac_toe::game_board::grid::Grid;
 //use tic_tac_toe::game_board::game_board_traits::GameBoard;
-use tic_tac_toe::sprite::Sprite;
-use tic_tac_toe::sprite::point::Point;
-use tic_tac_toe::sprite::color::Color;
-use tic_tac_toe::sprite::sprite_data::SpriteData;
+use tic_tac_toe::game_io::game_screen::sprite::Sprite;
+use tic_tac_toe::game_io::game_screen::sprite::point::Point;
+use tic_tac_toe::game_io::game_screen::sprite::color::Color;
+use tic_tac_toe::game_io::game_screen::sprite::sprite_data::SpriteData;
 
 #[allow(dead_code)]
 pub const FILL: usize = 999;
@@ -32,7 +32,7 @@ pub fn test_sprite_data() -> SpriteData {
 }
 #[allow(dead_code)]
 pub fn test_sprite() -> Sprite {
-    Sprite::new(point(0, 0), Color::White, Color::Black, test_sprite_data())
+    Sprite::new(point(0, 0), Color::WhiteOnBlue, test_sprite_data())
 }
 
 #[allow(dead_code)]

@@ -1,4 +1,6 @@
 use std::fmt::{Display, Formatter, Error};
+mod drawable;
+
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum BoardToken {
     Blank,
