@@ -36,14 +36,15 @@ impl ScreenBuilder {
                                                   self.screen_height,
                                                   self.screen_width);
 
+
         screen.add_sprite(Sprite::new(board_point.clone(), Color::WhiteOnBlue, sprite_sheet::board()));
 
-
-
+        let off_set_height = point_generator::center_side(board_height, self.screen_height);
+        let off_set_width = point_generator::center_side(board_width, self.screen_width);
         for row in 0..3 {
             for col in 0..3 {
-                let x = (row * 8) + 2 + board_point.clone().x();
-                let y = (col * 11) + 2 + board_point.clone().y();
+                let x = (row * 8) + 2 + off_set_height;
+                let y = (col * 11) + 2 + off_set_width;
                 let row_usize = row as usize;
                 let col_uszie = col as usize;
                 let point = Point::new(x , y);
