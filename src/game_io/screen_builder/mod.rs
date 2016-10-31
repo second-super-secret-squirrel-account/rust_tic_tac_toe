@@ -24,21 +24,31 @@ impl ScreenBuilder {
 
     pub fn playing_screen(&self, board: Grid<BoardToken>) -> GameScreen {
         let mut screen = GameScreen::new();
+        screen.add_sprite(self.background_sprite());
         screen.add_sprite(self.title_bar_sprite());
         screen.add_sprite(self.board_sprite());
 
+        for sprite in self.token_spites(board) {
+            screen.add_sprite(sprite);
+        }
 
+        screen
+    }
+
+    fn background_sprite(&self) -> Sprite {
+        let point = Point::new(0, 0);
+        let data = sprite_sheet::background(self.screen_height, self.screen_width);
+        let color = Color::WhiteOnBlue;
+
+        Sprite::new(point, color, data)
+
+
+    }
+
+    fn token_spites(&self, board: Grid<BoardToken>) -> Vec<Sprite> {
+        let mut tokens = Vec::new();
         let board_width = sprite_sheet::board().width();
         let board_height = sprite_sheet::board().height();
-
-        let board_point = point_generator::center(board_height,
-                                                  board_width,
-                                                  self.screen_height,
-                                                  self.screen_width);
-
-
-        screen.add_sprite(Sprite::new(board_point.clone(), Color::WhiteOnBlue, sprite_sheet::board()));
-
         let off_set_height = point_generator::center_side(board_height, self.screen_height);
         let off_set_width = point_generator::center_side(board_width, self.screen_width);
         for row in 0..3 {
@@ -49,10 +59,10 @@ impl ScreenBuilder {
                 let col_uszie = col as usize;
                 let point = Point::new(x , y);
                 let sprite_data = board.clone().get(row_usize, col_uszie).to_sprite_data();
-                screen.add_sprite(Sprite::new(point, Color::WhiteOnBlue, sprite_data));
+                tokens.push(Sprite::new(point, Color::WhiteOnBlue, sprite_data));
             }
         }
-        screen
+        tokens
     }
 
     fn title_bar_sprite(&self) -> Sprite {

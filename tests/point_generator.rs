@@ -1,6 +1,6 @@
 extern crate tic_tac_toe;
 use tic_tac_toe::game_io::game_screen::sprite::point::Point;
-use tic_tac_toe::screen_builder::point_generator;
+use tic_tac_toe::game_io::screen_builder::point_generator;
 
 #[test]
 fn center_sprite_on_screen_returns_a_point_of_25_50_for_sprite_50x100_on_100_200_screen() {

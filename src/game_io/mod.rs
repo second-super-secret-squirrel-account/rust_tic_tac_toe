@@ -1,5 +1,6 @@
 pub mod ncurses_wrapper;
 pub mod game_screen;
+pub mod screen_builder;
 pub mod key_board_input;
 
 pub fn start_io() {
