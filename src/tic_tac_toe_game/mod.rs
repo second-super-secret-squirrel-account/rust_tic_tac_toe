@@ -8,7 +8,7 @@ use game_rules::move_rules_traits::HasMoveRules;
 use game_board::game_board_traits::GameBoard;
 use game_rules::game_status_traits::HasGameStatus;
 use game_rules::game_state::GameState;
-use mini_max::MiniMax;
+use player_manager::mini_max::MiniMax;
 use player_manager::PlayerManager;
 use player_manager::player::PlayerType;
 

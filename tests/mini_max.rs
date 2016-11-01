@@ -5,7 +5,7 @@ use test_helper::*;
 use tic_tac_toe::game_board::game_board_traits::GameBoard;
 
 
-use tic_tac_toe::mini_max::MiniMax;
+use tic_tac_toe::player_manager::mini_max::MiniMax;
 
 #[test]
 fn ai_goes_for_the_block() {

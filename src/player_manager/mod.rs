@@ -1,4 +1,5 @@
 pub mod player;
+pub mod mini_max;
 use player_manager::player::Player;
 use player_manager::player::PlayerType;
 use game_board::board_token::BoardToken;
