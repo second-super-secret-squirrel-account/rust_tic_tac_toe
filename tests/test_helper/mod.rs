@@ -1,6 +1,5 @@
 extern crate tic_tac_toe;
 use tic_tac_toe::game_board::grid::Grid;
-//use tic_tac_toe::game_board::game_board_traits::GameBoard;
 use tic_tac_toe::game_io::game_screen::sprite::Sprite;
 use tic_tac_toe::game_io::game_screen::sprite::point::Point;
 use tic_tac_toe::game_io::game_screen::sprite::color::Color;

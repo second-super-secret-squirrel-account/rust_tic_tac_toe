@@ -24,7 +24,6 @@ fn is_right_returns_true_for_vim_binding() {
     assert!(is_right(KEY_L));
 }
 
-
 // WASD style movement keys
 #[test]
 fn is_up_returns_true_for_wasd_binding() {
