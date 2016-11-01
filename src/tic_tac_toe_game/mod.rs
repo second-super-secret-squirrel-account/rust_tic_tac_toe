@@ -1,21 +1,14 @@
-use game_io;
 use game_io::screen_builder::ScreenBuilder;
 use game_io::key_board_input::*;
 use game_io::screen_width;
 use game_io::screen_height;
 use game_board::grid::Grid;
 use game_board::board_token::BoardToken;
-
-
 use game_rules::move_rules_traits::HasMoveRules;
-
 use game_board::game_board_traits::GameBoard;
-
 use game_rules::game_status_traits::HasGameStatus;
 use game_rules::game_state::GameState;
-
 use mini_max::MiniMax;
-
 use player_manager::PlayerManager;
 use player_manager::player::PlayerType;
 
@@ -28,7 +21,7 @@ pub struct TicTacToeGame {
 impl TicTacToeGame {
 
     pub fn new(player_manager: PlayerManager) -> TicTacToeGame {
-        let mut board = Grid::new(3, 3, BoardToken::Blank);
+        let board = Grid::new(3, 3, BoardToken::Blank);
         TicTacToeGame {
             player_manager: player_manager,
             board: board,
@@ -73,7 +66,6 @@ impl TicTacToeGame {
     }
 
     pub fn play(&mut self) {
-        let mut active = true;
         while self.active {
             while self.board.game_status() == GameState::Playing {
                 self.draw_screen();

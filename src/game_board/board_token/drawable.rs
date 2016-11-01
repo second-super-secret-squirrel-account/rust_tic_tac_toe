@@ -16,22 +16,25 @@ impl BoardToken {
     fn sprite_data_player_x(&self) -> SpriteData {
         let mut sprite_data = SpriteData::new();
 
-        sprite_data.add_line("XXX  XXX");
-        sprite_data.add_line("  XXXX  ");
-        sprite_data.add_line("   XX   ");
-        sprite_data.add_line("  XXXX  ");
-        sprite_data.add_line("XXX  XXX");
-
+        sprite_data.add_line("          ");
+        sprite_data.add_line(" XXX  XXX ");
+        sprite_data.add_line("   XXXX   ");
+        sprite_data.add_line("    XX    ");
+        sprite_data.add_line("   XXXX   ");
+        sprite_data.add_line(" XXX  XXX ");
+        sprite_data.add_line("          ");
         sprite_data
     }
 
     fn sprite_data_player_o(&self) -> SpriteData {
         let mut sprite_data = SpriteData::new();
-        sprite_data.add_line("  OOOO  ");
-        sprite_data.add_line("OOO  OOO");
-        sprite_data.add_line("OO    OO");
-        sprite_data.add_line("OOO  OOO");
-        sprite_data.add_line("  OOOO  ");
+        sprite_data.add_line("          ");
+        sprite_data.add_line("   OOOO   ");
+        sprite_data.add_line(" OOO  OOO ");
+        sprite_data.add_line(" OO    OO ");
+        sprite_data.add_line(" OOO  OOO ");
+        sprite_data.add_line("   OOOO   ");
+        sprite_data.add_line("          ");
         sprite_data
     }
 
