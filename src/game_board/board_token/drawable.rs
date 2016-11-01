@@ -5,15 +5,15 @@ use game_io::game_screen::sprite::sprite_data_traits::Drawable;
 impl Drawable for BoardToken {
     fn to_sprite_data(&self) -> SpriteData {
         match *self {
-            BoardToken::Player1 => self.sprite_data_player1(),
-            BoardToken::Player2 => self.sprite_data_player2(),
+            BoardToken::PlayerX => self.sprite_data_player_x(),
+            BoardToken::PlayerO => self.sprite_data_player_o(),
             BoardToken::Blank => self.sprite_data_blank(),
         }
     }
 }
 
 impl BoardToken {
-    fn sprite_data_player1(&self) -> SpriteData {
+    fn sprite_data_player_x(&self) -> SpriteData {
         let mut sprite_data = SpriteData::new();
 
         sprite_data.add_line("XXX  XXX");
@@ -25,7 +25,7 @@ impl BoardToken {
         sprite_data
     }
 
-    fn sprite_data_player2(&self) -> SpriteData {
+    fn sprite_data_player_o(&self) -> SpriteData {
         let mut sprite_data = SpriteData::new();
         sprite_data.add_line("  OOOO  ");
         sprite_data.add_line("OOO  OOO");

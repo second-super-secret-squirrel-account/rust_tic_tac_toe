@@ -60,7 +60,7 @@ fn set_space_selects_the_correct_rol_col_for_4x4() {
 #[test]
 fn moves_can_be_played_on_cloned_board() {
     let test_board = Grid::new(3, 3, BoardToken::Blank);
-    let p1 = BoardToken::Player1;
+    let p1 = BoardToken::PlayerX;
     let mut clone_board = test_board.clone();
     let moves = test_board.available_moves();
     let space = moves[0];
