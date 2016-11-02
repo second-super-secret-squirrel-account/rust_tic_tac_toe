@@ -1,51 +1,5 @@
 use game_io::game_screen::sprite::sprite_data::SpriteData;
 
-pub fn board() -> SpriteData {
-    let mut sprite_data = SpriteData::new();
-
-    sprite_data.add_line("+----------+----------+----------+");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("+----------+----------+----------+");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("+----------+----------+----------+");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("|          |          |          |");
-    sprite_data.add_line("+----------+----------+----------+");
-
-    sprite_data
-}
-
-pub fn board_cursor() -> SpriteData {
-    let mut sprite_data = SpriteData::new();
-
-    sprite_data.add_line("**********");
-    sprite_data.add_line("*        *");
-    sprite_data.add_line("*        *");
-    sprite_data.add_line("*        *");
-    sprite_data.add_line("*        *");
-    sprite_data.add_line("*        *");
-    sprite_data.add_line("**********");
-
-    sprite_data
-}
-
 pub fn background(height: i32, width: i32) -> SpriteData {
     let mut sprite_data = SpriteData::new();
 
@@ -69,8 +23,6 @@ pub fn background(height: i32, width: i32) -> SpriteData {
     sprite_data
 }
 
-
-
 pub fn title() -> SpriteData {
     let mut sprite_data = SpriteData::new();
 
@@ -80,14 +32,6 @@ pub fn title() -> SpriteData {
     sprite_data.add_line("  |    |    |   | \\     \\____    |    |    /    |    \\ \\     \\____    |    |    /    |    \\  |        \\");
     sprite_data.add_line("  |____|    |___|  \\______  /    |____|    \\____|__  /  \\______  /    |____|    \\_______  / /_______  /");
     sprite_data.add_line("                          \\/                       \\/          \\/                       \\/          \\/ ");
-
-    sprite_data
-}
-
-pub fn bottom_menu() -> SpriteData {
-    let mut sprite_data = SpriteData::new();
-
-    sprite_data.add_line("Q: Quit   R: Rematch");
 
     sprite_data
 }
