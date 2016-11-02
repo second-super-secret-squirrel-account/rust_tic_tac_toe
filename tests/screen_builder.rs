@@ -3,6 +3,7 @@ use tic_tac_toe::game_board::grid::Grid;
 use tic_tac_toe::game_board::board_token::BoardToken;
 use tic_tac_toe::game_io::screen_builder::ScreenBuilder;
 use tic_tac_toe::tic_tac_toe_game::cursor::Cursor;
+use tic_tac_toe::game_io::game_screen::sprite::color::Color;
 
 
 #[test]
@@ -49,4 +50,37 @@ fn setup_screen_returns_a_screen_with_7_sprites() {
     let screen_builder = ScreenBuilder::new(50,100);
     let screen = screen_builder.setup_screen(cursor);
     assert_eq!(7, screen.sprites().len());
+}
+
+#[test]
+fn setup_screen_highlights_menu_item_1_only_when_cursor_row_1() {
+    let mut cursor = Cursor::new();
+    cursor.set_space(0);
+    let screen_builder = ScreenBuilder::new(50,100);
+    let screen = screen_builder.setup_screen(cursor);
+    assert_eq!(Color::BlueOnYellow, * screen.sprites()[2].color());
+    assert_eq!(Color::YellowOnBlue, * screen.sprites()[3].color());
+    assert_eq!(Color::YellowOnBlue, * screen.sprites()[4].color());
+}
+
+#[test]
+fn setup_screen_highlights_menu_item_1_only_when_cursor_row_2() {
+    let mut cursor = Cursor::new();
+    cursor.set_space(3);
+    let screen_builder = ScreenBuilder::new(50,100);
+    let screen = screen_builder.setup_screen(cursor);
+    assert_eq!(Color::YellowOnBlue, * screen.sprites()[2].color());
+    assert_eq!(Color::BlueOnYellow, * screen.sprites()[3].color());
+    assert_eq!(Color::YellowOnBlue, * screen.sprites()[4].color());
+}
+
+#[test]
+fn setup_screen_highlights_menu_item_1_only_when_cursor_row_3() {
+    let mut cursor = Cursor::new();
+    cursor.set_space(6);
+    let screen_builder = ScreenBuilder::new(50,100);
+    let screen = screen_builder.setup_screen(cursor);
+    assert_eq!(Color::YellowOnBlue, * screen.sprites()[2].color());
+    assert_eq!(Color::YellowOnBlue, * screen.sprites()[3].color());
+    assert_eq!(Color::BlueOnYellow, * screen.sprites()[4].color());
 }
