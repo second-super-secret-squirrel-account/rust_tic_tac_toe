@@ -91,7 +91,6 @@ impl ScreenBuilder {
         tokens
     }
 
-
     fn board_sprite(&self) -> Sprite {
         let board_width = sprite_sheet::board().width();
         let board_height = sprite_sheet::board().height();
