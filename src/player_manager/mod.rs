@@ -4,6 +4,7 @@ use player_manager::player::Player;
 use player_manager::player::PlayerType;
 use game_board::board_token::BoardToken;
 
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub struct PlayerManager {
     player1: Player,
     player2: Player,
@@ -17,6 +18,10 @@ impl PlayerManager {
             player2: player2,
             current_player: player1,
         }
+    }
+
+    pub fn reset(&mut self) {
+        self.current_player = self.player1.clone();
     }
 
     pub fn current_player(&self) -> &Player {
