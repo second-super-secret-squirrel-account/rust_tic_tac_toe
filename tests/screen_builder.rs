@@ -31,7 +31,7 @@ fn screen_builder_returns_a_screen_with_12_sprites_when_game_is_playing() {
 
 
 #[test]
-fn screen_builder_returns_a_screen_with_13_sprites_when_game_is_over() {
+fn screen_builder_returns_a_screen_with_15_sprites_when_game_is_over() {
     let mut board = Grid::new(3, 3, BoardToken::Blank);
     let cursor = Cursor::new();
     board.set(0, 0, BoardToken::PlayerX);
@@ -40,5 +40,5 @@ fn screen_builder_returns_a_screen_with_13_sprites_when_game_is_over() {
     let screen_builder = ScreenBuilder::new(50,100);
     let screen = screen_builder.playing_screen(board, cursor);
 
-    assert_eq!(14, screen.sprites().len());
+    assert_eq!(15, screen.sprites().len());
 }
