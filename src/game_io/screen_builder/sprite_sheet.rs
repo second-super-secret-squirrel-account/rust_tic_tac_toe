@@ -1,4 +1,3 @@
-//use std::fmt;
 use game_io::game_screen::sprite::sprite_data::SpriteData;
 
 pub fn board() -> SpriteData {
@@ -37,7 +36,6 @@ pub fn board_cursor() -> SpriteData {
     let mut sprite_data = SpriteData::new();
 
     sprite_data.add_line("**********");
-    sprite_data.add_line("*        *");
     sprite_data.add_line("*        *");
     sprite_data.add_line("*        *");
     sprite_data.add_line("*        *");

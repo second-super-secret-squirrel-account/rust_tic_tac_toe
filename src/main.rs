@@ -6,6 +6,7 @@ use tic_tac_toe::player_manager::player::Player;
 use tic_tac_toe::player_manager::PlayerManager;
 use tic_tac_toe::game_board::board_token::BoardToken;
 
+
 fn main() {
 
     //setup
@@ -14,7 +15,7 @@ fn main() {
 
     let player1 = Player::new(PlayerType::Human, BoardToken::PlayerX);
     let player2 = Player::new(PlayerType::Computer, BoardToken::PlayerO);
-    let  player_manager = PlayerManager::new(player1, player2);
+    let player_manager = PlayerManager::new(player1, player2);
 
     let mut tic_tat_toe_game = TicTacToeGame::new(player_manager);
 

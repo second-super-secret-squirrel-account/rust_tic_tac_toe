@@ -10,6 +10,7 @@ use game_io::game_screen::sprite::color::Color;
 use game_io::game_screen::sprite::sprite_data_traits::Drawable;
 use game_rules::game_status_traits::HasGameStatus;
 use game_rules::game_state::GameState;
+use tic_tac_toe_game::cursor::Cursor;
 
 pub struct ScreenBuilder {
     screen_width: i32,
@@ -24,11 +25,12 @@ impl ScreenBuilder {
         }
     }
 
-    pub fn playing_screen(&self, board: Grid<BoardToken>) -> GameScreen {
+    pub fn playing_screen(&self, board: Grid<BoardToken>, cursor: Cursor) -> GameScreen {
         let mut screen = GameScreen::new();
         screen.add_sprite(self.background_sprite());
         screen.add_sprite(self.title_bar_sprite());
         screen.add_sprite(self.board_sprite());
+        screen.add_sprite(self.cursor_sprite(cursor));
 
         for sprite in self.token_spites(board.clone()) {
             screen.add_sprite(sprite);
@@ -36,10 +38,20 @@ impl ScreenBuilder {
 
         if board.game_status() != GameState::Playing {
             screen.add_sprite(self.bottom_menu_sprite());
-
         }
-
         screen
+    }
+
+    fn cursor_sprite(&self, cursor: Cursor) -> Sprite {
+        let data = sprite_sheet::board_cursor();
+        let x = self.cursor_x(cursor.row(),
+                                    data.height());
+        let y = self.cursor_y(cursor.col(),
+                                    data.width());
+        let point = Point::new(x, y);
+        let color = Color::RedOnBlue;
+        Sprite::new(point, color, data)
+
     }
 
     fn bottom_menu_sprite(&self) -> Sprite {
@@ -57,24 +69,42 @@ impl ScreenBuilder {
         let color = Color::WhiteOnBlue;
 
         Sprite::new(point, color, data)
+    }
 
+    fn cursor_x(&self, row: i32, sprite_height: i32) -> i32 {
+        let board_height = sprite_sheet::board().height();
+        let off_set_height = point_generator::center_side(board_height, self.screen_height);
+        (row * (1 + sprite_height)) + 1 + off_set_height
+    }
 
+    fn cursor_y(&self, col: i32, sprite_width: i32) -> i32 {
+        let board_width = sprite_sheet::board().width();
+        let off_set_width = point_generator::center_side(board_width, self.screen_width);
+        (col * (1 + sprite_width)) + 1 + off_set_width
+    }
+
+    fn board_square_x(&self, row: i32, sprite_height: i32) -> i32 {
+        let board_height = sprite_sheet::board().height();
+        let off_set_height = point_generator::center_side(board_height, self.screen_height);
+        (row * (3 + sprite_height)) + 2 + off_set_height
+    }
+
+    fn board_square_y(&self, col: i32, sprite_width: i32) -> i32 {
+        let board_width = sprite_sheet::board().width();
+        let off_set_width = point_generator::center_side(board_width, self.screen_width);
+        (col * (3 + sprite_width)) + 2 + off_set_width
     }
 
     fn token_spites(&self, board: Grid<BoardToken>) -> Vec<Sprite> {
         let mut tokens = Vec::new();
-        let board_width = sprite_sheet::board().width();
-        let board_height = sprite_sheet::board().height();
-        let off_set_height = point_generator::center_side(board_height, self.screen_height);
-        let off_set_width = point_generator::center_side(board_width, self.screen_width);
         for row in 0..3 {
             for col in 0..3 {
-                let x = (row * 8) + 1 + off_set_height;
-                let y = (col * 11) + 1 + off_set_width;
                 let row_usize = row as usize;
                 let col_uszie = col as usize;
-                let point = Point::new(x , y);
                 let sprite_data = board.clone().get(row_usize, col_uszie).to_sprite_data();
+                let x = self.board_square_x(row, sprite_data.height());
+                let y = self.board_square_y(col, sprite_data.width());
+                let point = Point::new(x , y);
                 tokens.push(Sprite::new(point, Color::WhiteOnBlue, sprite_data));
             }
         }
@@ -84,22 +114,18 @@ impl ScreenBuilder {
     fn title_bar_sprite(&self) -> Sprite {
         let sprite_data = sprite_sheet::title();
         let sprite_width = sprite_sheet::title().width();
-
         let sprite_y = point_generator::center_side(sprite_width, self.screen_width);
         let point = Point::new(5, sprite_y);
-
         Sprite::new(point, Color::WhiteOnBlue, sprite_data)
     }
 
     fn board_sprite(&self) -> Sprite {
         let board_width = sprite_sheet::board().width();
         let board_height = sprite_sheet::board().height();
-
         let point = point_generator::center(board_height,
                                                   board_width,
                                                   self.screen_height,
                                                   self.screen_width);
-
         Sprite::new(point, Color::WhiteOnBlue, sprite_sheet::board())
     }
 }
