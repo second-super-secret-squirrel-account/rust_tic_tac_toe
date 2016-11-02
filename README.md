@@ -9,20 +9,24 @@
   In order to run this repo you must first have Cargo and the Ncurses Library installed.
   Mac osX users that have Xcode installed should already have the Ncurses Library by default.
 
-
-### Rust and Cargo Versions that were used for this project ###
-  * rustc 1.12.1 [rust github] (https://github.com/rust-lang/rust)
-  * cargo 0.13.0-nightly [cargo github](https://github.com/rust-lang/cargo)
-
 ---
 
 ###  To setup Cargo Rust and the Library for Ncurses use the following commands. ###
   * Debian / Ubuntu
+
   `sudo apt-get install cargo`
+
   `sudo apt-get install libncurses-dev`
 
   * Mac osX
+
   `curl -sf -L https://static.rust-lang.org/rustup.sh | sh`
+
+---
+
+### Rust and Cargo Versions that were used for this project ###
+    * rustc 1.12.1 [rust github] (https://github.com/rust-lang/rust)
+    * cargo 0.13.0-nightly [cargo github](https://github.com/rust-lang/cargo)
 
 ---
 
@@ -39,6 +43,6 @@
 
 ### Rust Dependencies needed to run this project ###
 
-    Cargo will install this dependency for you, it is just listed here as a reference.
+Cargo will install this dependency for you, it is just listed here as a reference.
 
   * ncurses = "5.83.0" [ncurses github](https://github.com/second-super-secret-squirrel-account/ncurses-rs)
