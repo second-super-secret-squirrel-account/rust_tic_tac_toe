@@ -5,8 +5,6 @@ pub mod sprite_data_traits;
 use game_io::game_screen::sprite::color::Color;
 use game_io::game_screen::sprite::point::Point;
 use game_io::game_screen::sprite::sprite_data::SpriteData;
-
-
 use game_io::ncurses_wrapper::output::*;
 use game_io::ncurses_wrapper::color_pairs::set_colors;
 

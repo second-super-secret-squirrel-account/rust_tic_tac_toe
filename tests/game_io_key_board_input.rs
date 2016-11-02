@@ -2,7 +2,6 @@ extern crate tic_tac_toe;
 
 use tic_tac_toe::game_io::key_board_input::*;
 
-
 // vim style movement keys
 #[test]
 fn is_up_returns_true_for_vim_binding() {

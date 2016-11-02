@@ -5,9 +5,6 @@ use tic_tac_toe::player_manager::player::PlayerType;
 use tic_tac_toe::player_manager::player::Player;
 use tic_tac_toe::game_board::board_token::BoardToken;
 
-
-
-
 #[test]
 fn change_players_swaps_players() {
     let player1 = Player::new(PlayerType::Human, BoardToken::PlayerX);

@@ -17,6 +17,7 @@ fn ai_goes_for_the_block() {
     let chosen_move = MiniMax::get_move(test_board, TEST_PLAYER_2, TEST_PLAYER_1);
     assert_eq!(2, chosen_move)
 }
+
 #[test]
 fn ai_goes_for_the_win_over_a_block() {
     let mut test_board = board_3x3();
@@ -32,7 +33,6 @@ fn ai_goes_for_the_win_over_a_block() {
     let chosen_move = MiniMax::get_move(test_board, TEST_PLAYER_2, TEST_PLAYER_1);
     assert_eq!(8, chosen_move);
 }
-
 
 #[test]
 fn ai_will_play_move_that_creates_fork() {

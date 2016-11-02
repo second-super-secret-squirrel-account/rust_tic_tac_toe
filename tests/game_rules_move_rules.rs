@@ -20,7 +20,6 @@ fn valid_move_returns_false_if_space_is_not_blank_token() {
     assert_eq!(false, test_board.valid_move(TEST_MOVE));
 }
 
-
 #[test]
 fn available_moves_count_returns_9_on_blank_3x3_board() {
     let test_board = board_3x3();
