@@ -32,7 +32,7 @@ impl ScreenBuilder {
     }
 
     fn cursor_sprite(&self, cursor: Cursor) -> Sprite {
-        let data = sprite_sheet::board_cursor();
+        let data = cursor.to_sprite_data();
         let x = self.cursor_x(cursor.row(),
         data.height());
         let y = self.cursor_y(cursor.col(),
