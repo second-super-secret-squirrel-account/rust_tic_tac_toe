@@ -1,7 +1,9 @@
 pub mod playing_screen;
+pub mod setup_screen;
 pub mod point_generator;
 pub mod sprite_sheet;
 
+use game_io::game_screen::GameScreen;
 use game_io::game_screen::sprite::Sprite;
 use game_io::game_screen::sprite::point::Point;
 use game_io::game_screen::sprite::color::Color;
@@ -18,6 +20,13 @@ impl ScreenBuilder {
             screen_width: screen_width,
             screen_height: screen_height,
         }
+    }
+
+    fn basic_screen(&self) -> GameScreen {
+        let mut screen = GameScreen::new();
+        screen.add_sprite(self.background_sprite());
+        screen.add_sprite(self.title_bar_sprite());
+        screen
     }
 
     fn background_sprite(&self) -> Sprite {

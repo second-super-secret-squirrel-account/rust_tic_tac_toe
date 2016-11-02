@@ -16,6 +16,10 @@ pub struct MiniMax<T> {
 
 impl <T: Clone + PartialEq> MiniMax<T> where T: fmt::Display {
     pub fn get_move(board: Grid<T>, current_player_token: T, opponent_token: T) -> usize {
+        if board.available_moves_count() == 9 {
+            return 0;
+        }
+
         let mini_max = MiniMax {
             current_player: current_player_token.clone(),
             opponent: opponent_token.clone(),

@@ -1,4 +1,5 @@
 pub mod cursor;
+pub mod setup;
 
 use game_io::screen_builder::ScreenBuilder;
 use game_io::key_board_input::*;

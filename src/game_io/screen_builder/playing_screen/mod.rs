@@ -16,9 +16,7 @@ use tic_tac_toe_game::cursor::Cursor;
 
 impl ScreenBuilder {
 pub fn playing_screen(&self, board: Grid<BoardToken>, cursor: Cursor) -> GameScreen {
-    let mut screen = GameScreen::new();
-    screen.add_sprite(self.background_sprite());
-    screen.add_sprite(self.title_bar_sprite());
+    let mut screen = self.basic_screen();
     screen.add_sprite(self.board_sprite());
     screen.add_sprite(self.cursor_sprite(cursor));
 
@@ -27,7 +25,7 @@ pub fn playing_screen(&self, board: Grid<BoardToken>, cursor: Cursor) -> GameScr
     }
 
     if board.game_status() != GameState::Playing {
-        screen.add_sprite(self.bottom_menu_sprite());
+        screen.add_sprite(self.game_over_bottom_menu_sprite());
     }
     screen
 }
@@ -44,7 +42,7 @@ fn cursor_sprite(&self, cursor: Cursor) -> Sprite {
 
 }
 
-fn bottom_menu_sprite(&self) -> Sprite {
+fn game_over_bottom_menu_sprite(&self) -> Sprite {
     let point = Point::new (self.screen_height - 3, 3);
     let color = Color::YellowOnBlue;
     let data = sprite_sheet::bottom_menu();
