@@ -41,7 +41,7 @@ impl ScreenBuilder {
         let sprite_data = sprite_sheet::title();
         let sprite_width = sprite_sheet::title().width();
         let sprite_y = point_generator::center_side(sprite_width, self.screen_width);
-        let point = Point::new(5, sprite_y);
+        let point = Point::new(2, sprite_y);
         Sprite::new(point, Color::WhiteOnBlue, sprite_data)
     }
 }

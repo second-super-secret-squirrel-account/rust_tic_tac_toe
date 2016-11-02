@@ -5,6 +5,11 @@
 * Version "0.1.0"
 * Repo owner: Tyler.Decker@gmail.com
 
+## Technical Notes ##
+It is recommended that you do not run the program inside a Terminal multiplexer, such as tmux or GNU Screen.
+Doing so may result in minor screen tearing. I'm currently looking into a solution for this.
+
+
 ## Summary of set up ##
   In order to run this repo you must first have Cargo and the Ncurses Library installed.
   Mac osX users that have Xcode installed should already have the Ncurses Library by default.
