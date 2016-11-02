@@ -6,7 +6,7 @@ use tic_tac_toe::tic_tac_toe_game::cursor::Cursor;
 
 
 #[test]
-fn screen_builder_returns_a_screen_with_a_background_sprite_size_50_100() {
+fn playing_screen_returns_a_screen_with_a_background_sprite_size_50_100() {
     let board = Grid::new(3, 3, BoardToken::Blank);
     let cursor = Cursor::new();
     let screen_builder = ScreenBuilder::new(50,100);
@@ -20,7 +20,7 @@ fn screen_builder_returns_a_screen_with_a_background_sprite_size_50_100() {
 }
 
 #[test]
-fn screen_builder_returns_a_screen_with_12_sprites_when_game_is_playing() {
+fn playing_screen_returns_a_screen_with_12_sprites_when_game_is_playing() {
     let board = Grid::new(3, 3, BoardToken::Blank);
     let cursor = Cursor::new();
     let screen_builder = ScreenBuilder::new(50,100);
@@ -31,7 +31,7 @@ fn screen_builder_returns_a_screen_with_12_sprites_when_game_is_playing() {
 
 
 #[test]
-fn screen_builder_returns_a_screen_with_13_sprites_when_game_is_over() {
+fn playing_screen_returns_a_screen_with_15_sprites_when_game_is_over() {
     let mut board = Grid::new(3, 3, BoardToken::Blank);
     let cursor = Cursor::new();
     board.set(0, 0, BoardToken::PlayerX);
@@ -40,5 +40,13 @@ fn screen_builder_returns_a_screen_with_13_sprites_when_game_is_over() {
     let screen_builder = ScreenBuilder::new(50,100);
     let screen = screen_builder.playing_screen(board, cursor);
 
-    assert_eq!(14, screen.sprites().len());
+    assert_eq!(15, screen.sprites().len());
+}
+
+#[test]
+fn setup_screen_returns_a_screen_with_7_sprites() {
+    let cursor = Cursor::new();
+    let screen_builder = ScreenBuilder::new(50,100);
+    let screen = screen_builder.setup_screen(cursor);
+    assert_eq!(7, screen.sprites().len());
 }

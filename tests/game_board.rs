@@ -13,7 +13,6 @@ fn board_sets_blank_value() {
     assert_eq!(test_board.fill_value(), FILL);
 }
 
-// Testing a 3 by 3 Game Board
 #[test]
 fn new_board_is_filled_with_blank_board_tokens() {
     let test_board = board_3x3();
@@ -65,6 +64,5 @@ fn moves_can_be_played_on_cloned_board() {
     let moves = test_board.available_moves();
     let space = moves[0];
     clone_board.set_space(space, p1.clone());
-    //assert_eq!(p1, test_board.get_space(space));
     assert_eq!(p1, clone_board.get_space(space));
 }
