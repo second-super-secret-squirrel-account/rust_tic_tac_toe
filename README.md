@@ -47,7 +47,7 @@ cargo 0.13.0-nightly [cargo github](https://github.com/rust-lang/cargo)
 ---
 
 ### Vim Syntax Highlighter for Rust ###
-[rust.vim] https://github.com/rust-lang/rust.vim
+[rust.vim](https://github.com/rust-lang/rust.vim)
 
 ### Rust Dependencies needed to run this project ###
 
